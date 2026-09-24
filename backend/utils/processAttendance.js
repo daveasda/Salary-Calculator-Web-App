@@ -228,6 +228,34 @@ const SALARY_RATES = {
         zeroShortLeaveBonus: 500,
         latePenalty: 5,
         addition: 0
+    },
+
+    "Fernando M D": {
+        basic: 0,
+        ot: 0,
+        breakfast: 0,
+        lunch: 0,
+        ota: 0,
+        attendance: 0,
+        sunday: 0,
+        zeroLateBonus: 0,
+        zeroShortLeaveBonus: 0,
+        latePenalty: 0,
+        addition: 0
+    },
+
+    "Chamod P G R": {
+        basic: 0,
+        ot: 0,
+        breakfast: 0,
+        lunch: 0,
+        ota: 0,
+        attendance: 0,
+        sunday: 0,
+        zeroLateBonus: 0,
+        zeroShortLeaveBonus: 0,
+        latePenalty: 0,
+        addition: 0
     }
 
 };

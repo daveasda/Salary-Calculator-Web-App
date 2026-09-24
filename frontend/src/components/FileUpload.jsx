@@ -37,17 +37,75 @@ export default function FileUpload() {
 
         setEmployees(response.data.employees);
     };
+
+    const handleDownload = async () => {
+
+        if (!file) return;
+
+
+        try {
+
+            const formData =
+                new FormData();
+
+            formData.append(
+                "file",
+                file
+            );
+
+
+            const response =
+                await axios.post(
+                    "http://localhost:5000/api/download",
+                    formData,
+                    {
+                        responseType: "blob"
+                    }
+                );
+
+
+            const url =
+                window.URL.createObjectURL(
+                    new Blob([response.data])
+                );
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href = url;
+
+            link.download =
+                "attendance-files.zip";
+
+
+            link.click();
+
+
+            window.URL.revokeObjectURL(
+                url
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Download error:",
+                error
+            );
+        }
+    };
     
     return (
         <div>
-        <div>
-            <h1> Salary Calculator</h1>
+        <div className="parent">
+            <h1>N D K Trade Point Salary Calculator</h1>
             <p> Upload attendance file to generate payslip</p>
         </div>
 
-        <div>
+        <div className="parent">
             <input type="file" accept=".xsls, .xls" onChange={handleFileInput} disabled={loading} />
-            <p>Supports .xls and .xlsx files</p>
+            <p>Supports Excel files</p>
        </div>
 
        <div className="employee-list">
@@ -63,11 +121,26 @@ export default function FileUpload() {
 
         </div>
         
-        {file && <p>Selected: {file.name}</p>}
+        <div className="parent">
+        {file && <p>Selected: {file.name}</p>} </div>
 
-        <button onClick={handleUpload}>Upload</button>
+        <div className="parent"> <button onClick={handleUpload}>Upload</button> 
 
-        <p> Employees loaded: {employees.length} </p>
+        <p> Employees loaded: {employees.length} </p> </div>
+
+        <div className="parent">
+        {employees.length > 0 && (
+
+            <button
+                className="download-button"
+                onClick={handleDownload}
+            >
+                Download Excel Files
+            </button>
+
+        )}
+        </div>
+
         {loading && (<p>Processing your file...</p> )}
 
         {error && (<p>Error: {error}</p>)}

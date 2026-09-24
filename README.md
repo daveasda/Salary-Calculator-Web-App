@@ -2,6 +2,9 @@
 
 A web application that processes employee attendance Excel files and automatically calculates salary allowances, deductions, and final salaries.
 
+## Link
+https://salary-calculator-web-app-frontend.onrender.com/
+
 ## Features
 
 - Upload Excel attendance files
@@ -19,8 +22,6 @@ A web application that processes employee attendance Excel files and automatical
 
 <img width="803" height="648" alt="image" src="https://github.com/user-attachments/assets/dcb84469-e91d-4eb3-b0bb-6bed76e50ff3" />
 
-
-![Salary Calculator](screenshots/calculated-salary.png)
 
 ## Tech Stack
 

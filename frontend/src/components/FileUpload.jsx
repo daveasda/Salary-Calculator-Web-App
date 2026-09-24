@@ -28,7 +28,7 @@ export default function FileUpload() {
 
 
         const response = await axios.post(
-            "http://salary-calculator-web-app.onrender.com/api/upload",
+            "https://salary-calculator-web-app.onrender.com/api/upload",
             formData
         );
 
@@ -56,7 +56,7 @@ export default function FileUpload() {
 
             const response =
                 await axios.post(
-                    "http://salary-calculator-web-app.onrender.com/api/download",
+                    "https://salary-calculator-web-app.onrender.com/api/download",
                     formData,
                     {
                         responseType: "blob"

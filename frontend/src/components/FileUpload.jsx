@@ -15,10 +15,41 @@ export default function FileUpload() {
     };
     
     const handleUpload = async () => {
-        const response = await axios.post("http://localhost:5000/api/upload");
-        console.log(response.data);
-    }
 
+        if (!file) {
+            return;
+        }
+
+        const formData = new FormData();
+
+        formData.append("file", file);
+
+
+        const response = await axios.post(
+            "http://localhost:5000/api/upload",
+            formData,
+            {
+                responseType: "blob"
+            }
+        );
+
+
+        const url = window.URL.createObjectURL(
+            new Blob([response.data])
+        );
+
+
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "attendance-files.zip";
+
+        link.click();
+
+
+        window.URL.revokeObjectURL(url);
+    };
+    
     return (
         <div>
         <div>

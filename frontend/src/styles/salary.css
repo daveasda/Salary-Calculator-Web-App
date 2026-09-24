@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #1f2937;
+}
+
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+
+.upload-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+
+.salary-card {
+    background: white;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ddd;
+}
+
+
+.employee-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid #ddd;
+
+    margin-bottom: 25px;
+}
+
+
+.employee-header h2 {
+    margin-bottom: 5px;
+}
+
+
+.employee-header p {
+    margin-top: 0;
+    color: #777;
+}
+
+
+.salary-heading,
+.salary-row {
+    display: grid;
+
+    grid-template-columns: 2fr 2fr 1fr;
+
+    gap: 20px;
+
+    padding: 12px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.salary-heading {
+    font-weight: bold;
+
+    background: #f1f5f9;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+}
+
+
+.salary-row strong {
+    text-align: right;
+}
+
+
+.penalty strong {
+    color: #c62828;
+}
+
+.penalty-row strong {
+    color: #b91c1c;
+}
+
+.bonus-row strong {
+    color: #15803d;
+}
+
+
+.net-salary {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    background: #fff3c4;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+button {
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+button:hover {
+    background: #1d4ed8;
+}

@@ -11,40 +11,13 @@ export const uploadFile = async (req, res) => {
         // Process uploaded attendance file
         const employees = processAttendance(req.file.buffer);
 
-        // Tell browser we are sending a ZIP
-        res.setHeader(
-            "Content-Type",
-            "application/zip"
-        );
-
-        res.setHeader(
-            "Content-Disposition",
-            'attachment; filename="attendance-files.zip"'
-        );
+        console.log("Employees calculated:", employees.length);
 
 
-        // Create ZIP
-        const zip = new ZipArchive();
-
-        zip.pipe(res);
-       
-        // Generate Excel for every employee
-        for (const employee of employees) {
-
-            const excelBuffer =
-                await generateAttendanceExcel(employee);
-
-            const fileName =
-                `${employee.name} ${employee.monthLabel} attendance.xlsx`;
-
-            zip.append(excelBuffer, {
-                name: fileName
-            });
-        }
-
-
-        // Finish ZIP
-        await zip.finalize();
+        res.json({ 
+            message: "Successfully processed attendance",
+            employees: employees
+        });
 
     } catch (error) {
 

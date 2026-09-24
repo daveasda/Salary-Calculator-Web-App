@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
+import SalaryCard from "./SalaryCard";
+import "../styles/salary.css";
 
 const API_URL =  import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -8,7 +10,7 @@ export default function FileUpload() {
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-
+    const [employees, setEmployees] = useState([]);
 
     const handleFileInput = (e) => {
     setFile(e.target.files[0]);
@@ -27,27 +29,13 @@ export default function FileUpload() {
 
         const response = await axios.post(
             "http://localhost:5000/api/upload",
-            formData,
-            {
-                responseType: "blob"
-            }
+            formData
         );
 
 
-        const url = window.URL.createObjectURL(
-            new Blob([response.data])
-        );
+        console.log(response.data.employees);
 
-
-        const link = document.createElement("a");
-
-        link.href = url;
-        link.download = "attendance-files.zip";
-
-        link.click();
-
-
-        window.URL.revokeObjectURL(url);
+        setEmployees(response.data.employees);
     };
     
     return (
@@ -61,11 +49,25 @@ export default function FileUpload() {
             <input type="file" accept=".xsls, .xls" onChange={handleFileInput} disabled={loading} />
             <p>Supports .xls and .xlsx files</p>
        </div>
+
+       <div className="employee-list">
+
+            {employees.map(employee => (
+
+                <SalaryCard
+                    key={employee.id}
+                    employee={employee}
+                />
+
+            ))}
+
+        </div>
         
         {file && <p>Selected: {file.name}</p>}
 
         <button onClick={handleUpload}>Upload</button>
 
+        <p> Employees loaded: {employees.length} </p>
         {loading && (<p>Processing your file...</p> )}
 
         {error && (<p>Error: {error}</p>)}

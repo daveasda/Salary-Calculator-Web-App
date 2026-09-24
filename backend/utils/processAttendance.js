@@ -439,6 +439,8 @@ function calculateSalary(employeeName, totals) {
 
     return {
 
+        rates: rates,
+
         basicAllowance,
 
         otAllowance,

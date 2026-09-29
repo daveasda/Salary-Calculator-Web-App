@@ -182,8 +182,8 @@ const SALARY_RATES = {
         ota: 0,
         attendance: 0,
         sunday: 0,
-        zeroLateBonus: 500,
-        zeroShortLeaveBonus: 500,
+        zeroLateBonus: 0,
+        zeroShortLeaveBonus: 0,
         latePenalty: 5,
         addition: 0
     },
@@ -196,8 +196,8 @@ const SALARY_RATES = {
         ota: 0,
         attendance: 0,
         sunday: 0,
-        zeroLateBonus: 500,
-        zeroShortLeaveBonus: 500,
+        zeroLateBonus: 0,
+        zeroShortLeaveBonus: 0,
         latePenalty: 5,
         addition: 0
     },
@@ -210,8 +210,8 @@ const SALARY_RATES = {
         ota: 0,
         attendance: 0,
         sunday: 0,
-        zeroLateBonus: 500,
-        zeroShortLeaveBonus: 500,
+        zeroLateBonus: 0,
+        zeroShortLeaveBonus: 0,
         latePenalty: 5,
         addition: 0
     },
@@ -224,8 +224,8 @@ const SALARY_RATES = {
         ota: 0,
         attendance: 0,
         sunday: 0,
-        zeroLateBonus: 500,
-        zeroShortLeaveBonus: 500,
+        zeroLateBonus: 0,
+        zeroShortLeaveBonus: 0,
         latePenalty: 5,
         addition: 0
     },
@@ -416,9 +416,9 @@ function calculateSalary(employeeName, totals) {
 
 
     const attendanceAllowance =
-        rates.attendance *
-        totals.workingDays;
-
+        totals.workingDays >= 25
+            ? rates.attendance * totals.workingDays
+            : 0;
 
     const sundayAllowance =
         rates.sunday *
